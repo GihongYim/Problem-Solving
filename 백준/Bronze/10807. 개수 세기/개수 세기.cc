@@ -1,20 +1,20 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+int main(void)
 {
-    int N;
-    int arr[101];
-    int v;
-    cin >> N;
-    for (int i = 0; i < N; i++)
-        cin >> arr[i];
-    cin >> v;
-
-    int ret = 0;
-    for (int i = 0; i < N; i++)
-        if(arr[i] == v)
-            ret++;
-    cout << ret << '\n';
-    return 0;
+	int n;
+	int num[205];
+	int a,v;
+	fill(num, num + 205, 0);
+	
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a;
+		num[a + 100]++;
+	}
+	cin >> v;
+	cout << num[v + 100];
+	return 0;
 }
