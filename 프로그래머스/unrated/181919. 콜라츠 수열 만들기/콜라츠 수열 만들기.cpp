@@ -1,0 +1,18 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(int n) {
+    vector<int> answer;
+    answer.push_back(n);
+    while (n != 1)
+    {
+        if (n % 2 == 1)
+            n = n * 3 + 1;
+        else
+            n = n / 2;
+        answer.push_back(n);
+    }
+    return answer;
+}
