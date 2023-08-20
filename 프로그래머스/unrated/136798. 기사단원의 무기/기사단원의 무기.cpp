@@ -8,9 +8,13 @@ int solution(int number, int limit, int power) {
     int divisors= 0;
     for (int n = 2; n <= number; n++) {
         divisors= 2;
-        for (int i = 2; i <= n / 2; i++) {
-            if (n % i == 0)
-                divisors++;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                if (i != n / i)
+                    divisors += 2;
+                else
+                    divisors++;
+            }
         }
         if (divisors > limit)
             answer += power;
