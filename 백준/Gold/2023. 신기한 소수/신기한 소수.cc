@@ -3,9 +3,6 @@
 using namespace std;
 
 int n;
-int lower;
-int upper;
-int initPrime[4] = {2, 3, 5, 7};
 vector<int> qPrime;
 
 
@@ -43,10 +40,6 @@ int main()
     cin.tie(NULL); cout.tie(NULL);
     
     cin >> n;
-    upper = 1;
-    for (int i = 0; i < n; i++)
-        upper *= 10;
-    lower = upper / 10;
     checkQPrime(0, 0);
     for (int i = 0; i < qPrime.size(); i++) {
         cout << qPrime[i] << '\n';
