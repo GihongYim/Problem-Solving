@@ -1,25 +1,37 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
-#include <cmath>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    double num;
+int gcd(int a, int b) {
+  if (b == 0) return a;
+  return gcd(b, a % b);
+}
 
-    cin >> num;
-    for (long long q = 1; q <= 1000000; q++) {
-        // cout << abs((num * q) - (long long)(num * q + 0.000001)) << '\n';
-        if (abs((num * q) - (long long)(num * q + 0.000001)) <= 0.0000011) {
-            cout << "YES\n";
-            cout << (long long)(num * q + 0.000001) << ' ' << q << '\n';
-            return 0;
-        }
-    }
-    cout << "NO\n";
-    return 0;
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  string k; cin >> k;
+
+  k = k.substr(2);
+
+  int numerator, denominator;
+  if (k.length() == 1 || k[0] != k[k.length()-1]) {
+    numerator = stoi(k);
+    denominator = pow(10, k.length());
+  } else {
+    numerator = stoi(k);
+    denominator = 0;
+    for (size_t i = 0; i < k.length(); i++)
+      denominator = (denominator * 10) + 9;
+  }
+
+  int commonDivisor = gcd(numerator, denominator);
+  numerator /= commonDivisor;
+  denominator /= commonDivisor;
+
+  cout << "YES\n";
+  cout << numerator << " " << denominator << "\n";
+
+  return 0;
 }
