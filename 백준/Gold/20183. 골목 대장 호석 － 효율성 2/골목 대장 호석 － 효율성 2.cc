@@ -42,7 +42,7 @@ int main()
         if (curr.first != hum[curr.second]) continue;
         for (auto next : adj[curr.second]) {
             ll h = max(curr.first, next.second);
-            if (h < hum[next.first] && d[curr.second] + next.second <= C && d[curr.second] + next.second < d[next.first]) {
+            if (h <= hum[next.first] && d[curr.second] + next.second <= C && d[curr.second] + next.second < d[next.first]) {
                 hum[next.first] = h;
                 d[next.first] = d[curr.second] + next.second;
                 pq.push(make_pair(h, next.first));
