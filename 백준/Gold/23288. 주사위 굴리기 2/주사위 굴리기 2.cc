@@ -5,12 +5,12 @@ using namespace std;
 const int MAX = 20;
 
 int N, M, K;
-long long board[MAX][MAX];
-long long dice[4][3];
+int board[MAX][MAX];
+int dice[4][3];
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 bool visited[MAX][MAX];
-long long maxLength;
+int maxLength;
 
 void east() {
 	int tmp = dice[1][2];
@@ -116,7 +116,7 @@ int main()
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 	int dir = 0;
-	long long score = 0;
+	int score = 0;
 
 	cin >> N >> M >> K;
 
