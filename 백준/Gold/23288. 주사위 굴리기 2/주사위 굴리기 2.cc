@@ -70,9 +70,9 @@ void moveDice(int &x, int &y, int &dir) {
 		north();
 }
 
-void	findNbr(int x, int y) {
+int	findNbr(int x, int y) {
 	int nx, ny;
-
+	int cnt = 1;
 	for (int i = 0; i < N; i++) {
 		fill(visited[i], visited[i] + M, false);
 	}
@@ -91,8 +91,10 @@ void	findNbr(int x, int y) {
 			if (board[nx][ny] != board[x][y]) continue;
 			visited[nx][ny] = true;
 			q.push(make_pair(nx, ny));
+			cnt++;
 		}
 	}
+	return cnt;
 }
 
 void dfs(int x, int y, long long length) {
@@ -111,28 +113,14 @@ void dfs(int x, int y, long long length) {
 	}
 }
 
-void findMaxLength(vector<pair<int, int> >& candi) {
-	for (int i = 0; i < N; i++) {
-		fill(pathVisited[i], pathVisited[i] + M, false);
-	}
-	for (size_t i = 0; i < candi.size(); i++) {
-		pathVisited[candi[i].first][candi[i].second] = true;
-		dfs(candi[i].first, candi[i].second, 1);	
-		pathVisited[candi[i].first][candi[i].second] = false;
-	}
-}
-
-
 long long getScore(int x, int y) {
-	findNbr(x, y);
+	maxLength = findNbr(x, y);
 	vector<pair<int, int>> candi;
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			if (visited[i][j]) candi.push_back(make_pair(i, j));
 		}
 	}
-	// maxLength = 1;
-	// findMaxLength(candi);
 	return board[x][y] * candi.size();
 }
 
