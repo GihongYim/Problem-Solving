@@ -10,7 +10,6 @@ long long dice[4][3];
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 bool visited[MAX][MAX];
-bool pathVisited[MAX][MAX];
 long long maxLength;
 
 void east() {
@@ -99,12 +98,6 @@ int	findNbr(int x, int y) {
 
 long long getScore(int x, int y) {
 	maxLength = findNbr(x, y);
-	vector<pair<int, int>> candi;
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++) {
-			if (visited[i][j]) candi.push_back(make_pair(i, j));
-		}
-	}
 	return board[x][y] * maxLength;
 }
 
