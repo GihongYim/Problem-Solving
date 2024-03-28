@@ -97,22 +97,6 @@ int	findNbr(int x, int y) {
 	return cnt;
 }
 
-void dfs(int x, int y, long long length) {
-	int nx, ny;
-	maxLength = max(maxLength, length);
-
-	for (int d = 0; d < 4; d++) {
-		nx = x + dx[d];
-		ny = y + dy[d];
-		if (nx < 0 || nx >= N || ny < 0 || ny >= M) continue;
-		if (pathVisited[nx][ny] || !visited[nx][ny]) continue;
-		if (board[nx][ny] != board[x][y]) continue;
-		pathVisited[nx][ny] = true;
-		dfs(nx, ny, length + 1);
-		pathVisited[nx][ny] = false;
-	}
-}
-
 long long getScore(int x, int y) {
 	maxLength = findNbr(x, y);
 	vector<pair<int, int>> candi;
@@ -121,7 +105,7 @@ long long getScore(int x, int y) {
 			if (visited[i][j]) candi.push_back(make_pair(i, j));
 		}
 	}
-	return board[x][y] * candi.size();
+	return board[x][y] * maxLength;
 }
 
 void changeDir(int x, int y, int& dir) {
