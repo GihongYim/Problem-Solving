@@ -2,7 +2,7 @@
 using namespace std;
 
 
-const int MAX = 25;
+const int MAX = 20;
 
 int N, M, K;
 long long board[MAX][MAX];
