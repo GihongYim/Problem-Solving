@@ -53,19 +53,9 @@ int main(void)
     for (int i = 0; i < N; i++) {
         Flower input;
         cin >> input.sm >> input.sd >> input.em >> input.ed;
-        // if (days[input.em] == input.ed) {
-        //     input.em += 1;
-        //     input.ed = 1;
-        // } else {
-        //     input.ed += 1;
-        // }
         flowers.push_back(input);
     }
     sort(flowers.begin(), flowers.end(), flowerCmp);
-    // for (int i = 0; i < N; i++) {
-    //     cout << flowers[i].sm << ' ' << flowers[i].sd << ' ';
-    //     cout << flowers[i].em << ' ' << flowers[i].ed << '\n';
-    // }
     while (1) {
         vector<Flower> candi;
         for (int i = 0; i < N; i++) {
