@@ -10,7 +10,6 @@ const int MAX = 11;
 string Map[MAX];
 map<string, int> m;
 set<string> s;
-
 int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 int dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
@@ -40,21 +39,25 @@ int main(void)
         cin >> Map[i];
     }
     string tmp;
+    vector<string> v(K);
+
     for (int i = 0; i < K; i++) {
         cin >> tmp;
+        v[i] = tmp;
         m.insert(make_pair(tmp, 0));
-        for (int j = 1; j <= tmp.length(); j++) {
+        for (size_t j = 1; j <= tmp.length(); j++) {
             s.insert(tmp.substr(0, j));
         }
     }
+    s.insert("");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             string start = "";
             dfs(i, j, start + Map[i][j]);
         }
     }
-    for (auto u : m) {
-        cout << u.second << '\n';
+    for (size_t i = 0; i < v.size(); i++) {
+        cout << m[v[i]] << '\n';
     }
     return 0;
 }
