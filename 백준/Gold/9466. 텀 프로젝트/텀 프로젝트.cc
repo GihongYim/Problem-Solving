@@ -1,4 +1,4 @@
-#include <cstdio>
+#include <iostream>
 #include <algorithm>
 using namespace std;
 
@@ -28,11 +28,13 @@ void dfs(int curr)
 
 int main()
 {
-	scanf("%d", &T);
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cin >> T;
 	for (int t = 0; t < T; t++) {
-		scanf("%d", &N);
+		cin >> N;
 		for (int i = 0; i < N; i++) {
-			scanf("%d", S + i);
+			cin >> S[i];
 			S[i]--;
 		}
 		fill(visited, visited + N, false);
@@ -42,7 +44,7 @@ int main()
 			if (!visited[i])
 				dfs(i);
 		}
-		printf("%d\n", N - cnt);
+        cout << N - cnt << '\n';
 	}
 
 	return 0;
