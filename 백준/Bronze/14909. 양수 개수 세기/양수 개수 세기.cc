@@ -6,11 +6,11 @@ int main()
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 	int cnt = 0;
-	int n;
+	string n;
 	while (cin >> n) 
 	{
-		if (n > 0)
-			cnt++;
+		if (n[0] == '-' || n[0] == '0')continue;
+		cnt++;
 	}
 	cout << cnt << '\n';
 
