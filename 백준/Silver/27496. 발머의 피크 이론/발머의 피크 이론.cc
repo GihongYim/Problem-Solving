@@ -11,7 +11,6 @@ int main()
 	int N, L;
 
 	ll c = 0;
-	int answer = 0;
 	int hours = 0;
 	cin >> N >> L;
 
@@ -30,12 +29,8 @@ int main()
 		}
 		if (c >= 129 && c <= 138) {
 			hours++;
-		} else {
-			// answer = max(answer, hours);
-			// hours = 0;
 		}
 	}
-	// answer = max(answer, hours);
 	cout << hours << '\n';
 	return 0;
 }
