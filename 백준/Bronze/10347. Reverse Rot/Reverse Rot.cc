@@ -24,18 +24,14 @@ int main()
 			break;
 		cin >> plane;
 		reverse(plane.begin(), plane.end());
-		for (int i = 0; i < plane.length(); i++) {
-			if (plane[i] >= 'A' && plane[i] <= 'Z')
-				index = plane[i] - 'A';
-			else if (plane[i] == '_') {
-				index = 'Z' + 1 - 'A';
-			} else if (plane[i] == '.') {
-				index = 'Z' + 2 - 'A';
-			}
-			index += N;
-			index %= MOD;
-			plane[i] = letters[index];
+		for (char &ch : plane) {
+			int index = letters.find(ch);
+
+			index = (index + N) % MOD;
+
+			ch = letters[index];
 		}
+
 		cout << plane << '\n';
 	}
 
