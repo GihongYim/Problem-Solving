@@ -9,22 +9,31 @@ int main()
 	int n;
 	cin >> n;
 
-	vector<int> score(n);
-	vector<int> trick(5);
-	int a, b;
 	int maxScore = 0;
+	int a, b, x;
+	int trick[5];
 
 	for (int i = 0; i < n; i++){
 		cin >> a >> b;
+
 		for (int j = 0; j < 5; j++) {
 			cin >> trick[j];
 		}
-		sort(trick.rbegin(), trick.rend());
-		score[i] = max(a, b) + trick[0] + trick[1];
-		maxScore = max(maxScore, score[i]);
+
+		int first = 0, second = 0;
+		for (int j = 0; j < 5; j++) {
+			if (trick[j] > first) {
+				second = first;
+				first = trick[j];
+			} else if (trick[j] > second) {
+				second = trick[j];
+			}
+		}
+
+		int score = max(a, b) + first + second;
+		if (score > maxScore) maxScore = score;
 	}
 
 	cout << maxScore << '\n';
-
 	return 0;
 }
