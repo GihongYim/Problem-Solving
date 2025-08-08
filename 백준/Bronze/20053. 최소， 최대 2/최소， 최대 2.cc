@@ -7,14 +7,18 @@ int main()
 	cin.tie(NULL); cout.tie(NULL);
 
 	int T, N;;
-	int maxValue = -1000001;
-	int minValue = 1000001;
+	int maxValue;
+	int minValue;
 
 	cin >> T;
 	while (T--)
 	{
 		cin >> N;
 		int num;
+
+		maxValue = -1000001;
+		minValue = 1000001;
+
 		for (int i = 0; i < N; i++)
 		{
 			cin >> num;
@@ -22,8 +26,7 @@ int main()
 			minValue = min(minValue, num);
 		}
 		cout << minValue << " " << maxValue << "\n";
-		maxValue = -1000001;
-		minValue = 1000001;
+
 	}
 
 	return 0;
