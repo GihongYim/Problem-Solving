@@ -4,7 +4,8 @@ using namespace std;
 int main()
 {
 	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
 	int T, N;;
 	int maxValue;
@@ -22,8 +23,8 @@ int main()
 		for (int i = 0; i < N; i++)
 		{
 			cin >> num;
-			maxValue = max(maxValue, num);
-			minValue = min(minValue, num);
+            if (num > maxValue) maxValue = num;
+            if (num < minValue) minValue = num;
 		}
 		cout << minValue << " " << maxValue << "\n";
 
