@@ -6,7 +6,7 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int k;
+    long long k;
     long long a, x;
     long long b, y;
 
@@ -15,7 +15,7 @@ int main() {
     cin >> a >> x;
     cin >> b >> y;
 
-    long long result = max((k - a) * x + (k - a - b) * y, (k - b) * y + (k - a - b) * x);
+    long long result = max(max(0LL, k - a) * x + max(0LL, k - a - b) * y, max(0LL, k - b) * y + max(0LL, k - a - b) * x);
     cout << result << "\n";
     return 0;
 }
