@@ -6,25 +6,18 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    string alpha = "abcdefghijklmnopqrstuvwxyz";
-
     string word;
 
     cin >> word;
-    
-    int k = 0;
-    int index = 0;
-    int l = word.length();
-    while (index < l) {
-        for (int i = 0; i < 26; i++) {
-            if (word[index] == alpha[i]) {
-                index++;
-            }
+
+    int k = 1;
+
+    for (int i = 1; i < word.length(); i++) {
+        if (word[i - 1] >= word[i]) {
+            k++;
         }
-        k++;
     }
 
     cout << k << '\n';
-
     return 0;
 }
