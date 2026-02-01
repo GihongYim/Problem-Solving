@@ -13,15 +13,15 @@ map<pair<string, int>, bool> mp;
 
 bool canGraduate = false;
 
-void backtracking(vector<s_lecture>& lectures, int idx, int M, int currentCredits) {
-    if (currentCredits >= M) {
+void solve(int idx, int count, int N, int M, vector<s_lecture>& lectures) {
+    if (canGraduate) return;
+
+    if (count >= M) {
         canGraduate = true;
         return;
     }
 
-    if (idx >= lectures.size()) {
-        return;
-    }
+    if (idx >= N) return;
 
     bool canTake = true;
     for (auto& h : lectures[idx].hs) {
@@ -36,15 +36,16 @@ void backtracking(vector<s_lecture>& lectures, int idx, int M, int currentCredit
             mp[make_pair(h.first, h.second)] = true;
         }
 
-        backtracking(lectures, idx + 1, M, currentCredits + lectures[idx].c);
+        solve(idx + 1, count + lectures[idx].c, N, M, lectures);
 
         for (auto& h : lectures[idx].hs) {
             mp[make_pair(h.first, h.second)] = false;
         }
     }
 
-    backtracking(lectures, idx + 1, M, currentCredits);
+    solve(idx + 1, count, N, M, lectures);
 }
+
 
 int main() {
     ios::sync_with_stdio(false);
@@ -73,13 +74,14 @@ int main() {
         }
     }
     
-    backtracking(lectures, 0, M, 0);
+    solve(0, 0, N, M, lectures);
 
     if (canGraduate) {
         cout << "YES\n";
     } else {
         cout << "NO\n";
     }
+
 
     return 0;
 }
